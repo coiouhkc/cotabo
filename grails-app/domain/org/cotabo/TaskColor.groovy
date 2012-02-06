@@ -2,6 +2,8 @@ package org.cotabo
 
 class TaskColor {
 	
+	// TODO: named property Board
+	
 	static belongsTo = [Task, Board]
 	static hasMany = [tasks : Task]
 	
@@ -14,6 +16,7 @@ class TaskColor {
 	
 	String name
 	String color
+	boolean active
 	
 	@Override
 	public String toString(){

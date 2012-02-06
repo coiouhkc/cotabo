@@ -30,7 +30,6 @@ by creating you board and view is with 2 different browser sessions and collabor
 
 Further features that we plan to implement in the futre
 -------------------------------------
-* Full-text search on Tasks (board specific)
 * RSS feeds for all updates on a Board
 * Support for Swimlanes on boards
 * Flow improvement / Bottleneck suggestions based on historical data of a board
