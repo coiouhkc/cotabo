@@ -54,6 +54,7 @@ grails.project.dependency.resolution = {
 		//compile
 		compile ':export:1.1.1'
 		compile ":cache-headers:1.1.5"
+		compile ":spring-security-core:1.2.7"
 		
 		//build
 		build ":tomcat:$grailsVersion"
