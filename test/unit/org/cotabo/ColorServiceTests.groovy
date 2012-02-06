@@ -131,4 +131,33 @@ class ColorServiceTests {
 		assertEquals 0, Board.list().count{taskColor in it.colors}
 		
 	}
+	
+	void testAssignColorTask() {
+		mockDomain(TaskColor)
+		mockDomain(Task)
+		
+		def task = [name: "test task", durationHours:0D, priority:"Normal"] as Task
+		def taskColor = [name:"Tag for Me", color:"#123456"] as TaskColor
+		
+		taskColor.save()
+		task.save()
+		
+		def service = new ColorService()
+		service.assign(task, taskColor)
+		
+		assertNotNull TaskColor.findByName("Tag for Me")
+		assertNotNull Task.findByName("test task")
+		
+		task = Task.findByName("test task")
+		taskColor = TaskColor.findByName("Tag for Me")
+		
+		assertNotNull task.colors
+		assertTrue task.colors.size()>0
+		assertNotNull taskColor.tasks 
+		assertTrue taskColor.tasks.size()>0
+		
+		assertNotNull Task.list().collect{taskColor in it.colors}
+		assertTrue Task.list().count{taskColor in it.colors}>0
+		//assertNotNull TaskColor.findByBoard(board) // taskColor has not property board
+	}
 }

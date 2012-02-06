@@ -3,6 +3,7 @@ package org.cotabo
 class ColorService {
 	
 	static transactional = true
+	def sessionFactory
 	
 	def create(TaskColor color){
 		color.active = true
@@ -24,8 +25,9 @@ class ColorService {
 
     def assign(Task task, TaskColor color) {
 		task.addToColors(color)
-		task.save(flush:true)
-		color.save(flush:true)
+		//task.save(flush:true)
+		//color.save()
+		sessionFactory?.getCurrentSession()?.flush()
     }
 	
 	def unassign(Task task, TaskColor color) {

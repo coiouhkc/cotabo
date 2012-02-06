@@ -48,8 +48,8 @@ class Task implements Rerenderable {
 		description nullable:true, blank:true, maxSize:254
 		details nullable:true, blank:true
 		durationHours nullable:false, min:0D, max:500D						
-		column nullable:false
-		creator nullable:false
+		column nullable:true
+		creator nullable:true
 		assignee nullable:true		
 		priority nullable:false, validator: {val, obj -> val in grailsConfig.config.taskboard.priorities }
 		workflowStartDate nullable: true
